@@ -1,18 +1,22 @@
-# coding=utf-8
+#!usr/bin/env python  
+#-*- coding:utf-8 -*-
+""" 
+@author:DL 
+@file: crawl_test.py 
+@time: 2018/06/05 19:32 
+"""
 
 import requests
 from bs4 import BeautifulSoup
 
-
-# 获取html文档
+# 鑾峰彇html鏂囨。
 def get_html(url):
     """get the content of the url"""
     response = requests.get(url)
     response.encoding = 'utf-8'
     return response.text
 
-
-# 获取笑话
+# 鑾峰彇绗戣瘽
 def get_certain_joke(html):
     """get the joke of the html"""
     soup = BeautifulSoup(html, 'lxml')
@@ -20,8 +24,7 @@ def get_certain_joke(html):
 
     return joke_content
 
-
-url_joke = "https://www.qiushibaike.com/hot/"
+url_joke = "https://www.qiushibaike.com"
 html = get_html(url_joke)
 joke_content = get_certain_joke(html)
 print joke_content
